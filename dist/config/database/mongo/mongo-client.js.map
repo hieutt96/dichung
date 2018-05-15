@@ -1,0 +1,1 @@
+{"version":3,"file":"mongo-client.js","sourceRoot":"","sources":["../../../../app/config/database/mongo/mongo-client.ts"],"names":[],"mappings":";;AAAA,mCAAmC;AAEnC,MAAM,WAAW,GAAG,mCAAmC,CAAC;AAExD,OAAO,CAAC,OAAO,CAAC,WAAW,EAAE,UAAS,GAAG;IACrC,IAAG,GAAG;QAAE,MAAM,GAAG,CAAC;IAClB,OAAO,CAAC,GAAG,CAAC,wBAAwB,CAAC,CAAC;AAC1C,CAAC,CAAC,CAAC;AAEH,MAAM,CAAC,OAAO,GAAG,OAAO,CAAC"}
