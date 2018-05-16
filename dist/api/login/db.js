@@ -22,4 +22,4 @@ class Db {
     }
 }
 exports.Db = Db;
-//# sourceMappingURL=db.js.map
+//# sourceMappingURL=DB.js.map

@@ -15,4 +15,4 @@ class UserApiCategory {
     }
 }
 module.exports = UserApiCategory;
-//# sourceMappingURL=userApiCategory.js.map
+//# sourceMappingURL=UserApiCategory.js.map

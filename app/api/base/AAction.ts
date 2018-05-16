@@ -2,7 +2,7 @@ import {ANotify} from "./ANotify";
 
 export abstract class AAction{
 
-    private notifys = new Array();
+    notifys = new Array();
     
     responseError(message:any){
         throw JSON.stringify({code:'error',message:message});

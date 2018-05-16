@@ -15,4 +15,4 @@ class UserPartner {
     }
 }
 module.exports = UserPartner;
-//# sourceMappingURL=userPartner.js.map
+//# sourceMappingURL=UserPartner.js.map

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const userInfo_1 = require("./userInfo");
-class Member extends userInfo_1.AUserInfo {
+const UserInfo_1 = require("./UserInfo");
+class Member extends UserInfo_1.AUserInfo {
     constructor(user) {
         super(user);
     }
@@ -9,4 +9,4 @@ class Member extends userInfo_1.AUserInfo {
     }
 }
 exports.Member = Member;
-//# sourceMappingURL=member.js.map
+//# sourceMappingURL=Member.js.map

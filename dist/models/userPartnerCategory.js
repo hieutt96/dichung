@@ -18,4 +18,4 @@ class UserPartnerCategory {
     }
 }
 module.exports = UserPartnerCategory;
-//# sourceMappingURL=userPartnerCategory.js.map
+//# sourceMappingURL=UserPartnerCategory.js.map

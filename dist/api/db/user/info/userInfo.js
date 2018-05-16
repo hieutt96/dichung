@@ -6,4 +6,4 @@ class AUserInfo {
     }
 }
 exports.AUserInfo = AUserInfo;
-//# sourceMappingURL=userInfo.js.map
+//# sourceMappingURL=UserInfo.js.map

@@ -12,4 +12,4 @@ class UserConfig {
     }
 }
 module.exports = UserConfig;
-//# sourceMappingURL=userConfig.js.map
+//# sourceMappingURL=UserConfig.js.map

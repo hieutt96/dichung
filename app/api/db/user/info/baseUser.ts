@@ -1,6 +1,6 @@
-import {IUserInfo} from './iuserinfo';
-import {AUserInfo} from './userInfo';
-import { UserAccount } from '../../../../models/userAccount';
+import {IUserInfo} from './IUserInfo';
+import {AUserInfo} from './UserInfo';
+import { UserAccount } from '../../../../models/UserAccount';
 
 export class BaseUser extends AUserInfo implements IUserInfo{
     constructor(user:UserAccount){

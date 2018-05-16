@@ -19,4 +19,4 @@ class UserApi {
     }
 }
 module.exports = UserApi;
-//# sourceMappingURL=userApi.js.map
+//# sourceMappingURL=UserApi.js.map

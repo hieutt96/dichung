@@ -16,4 +16,4 @@ class UserRole {
     }
 }
 module.exports = UserRole;
-//# sourceMappingURL=userRole.js.map
+//# sourceMappingURL=UserRole.js.map

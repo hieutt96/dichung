@@ -5,4 +5,4 @@ class Factory {
     }
 }
 exports.Factory = Factory;
-//# sourceMappingURL=factory.js.map
+//# sourceMappingURL=Factory.js.map
