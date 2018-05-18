@@ -1,5 +1,6 @@
-import * as mysql from 'mysql'
-const pool = mysql.createPool({
+import * as mysql from 'mysql';
+
+export const pool = mysql.createPool({
     host:process.env.DB_HOST,
     user:process.env.DB_USER,
     password:process.env.DB_PASSWORD,
@@ -8,4 +9,3 @@ const pool = mysql.createPool({
 
 console.log("Connected MYSQL");
 console.log(process.env.DB_HOST);
-module.exports = pool;

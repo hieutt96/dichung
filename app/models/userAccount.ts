@@ -1,9 +1,6 @@
 import { Timestamp } from "bson";
-
-// const pool = require('app/config/database/mysql/pool');
-// import * as pool from 'app/config/database/mysql/pool';
-
 import "./config/database/mysql/pool.ts";
+import { pool } from "../config/database/mysql/pool";
 
 export class UserAccount{
     id: number;
@@ -51,3 +48,4 @@ export class UserAccount{
         }
     }
 }
+

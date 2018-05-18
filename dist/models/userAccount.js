@@ -1,7 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// const pool = require('app/config/database/mysql/pool');
-// import * as pool from 'app/config/database/mysql/pool';
 require("./config/database/mysql/pool.ts");
 class UserAccount {
     constructor(id, partner_id, role_id, username, password, token, disable_api_ids, last_login, created_at, updated_at) {

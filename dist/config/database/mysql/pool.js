@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mysql = require("mysql");
-const pool = mysql.createPool({
+exports.pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -9,5 +9,4 @@ const pool = mysql.createPool({
 });
 console.log("Connected MYSQL");
 console.log(process.env.DB_HOST);
-module.exports = pool;
 //# sourceMappingURL=pool.js.map
