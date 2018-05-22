@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class User_api_category {
-    constructor(id, name, created_at, updated_at) {
-        this.id = id;
-        this.name = name;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+    constructor(props) {
+        this.id = props.id;
+        this.name = props.name;
+        this.created_at = props.created_at;
+        this.updated_at = props.updated_at;
     }
     getId() {
         return this.id;

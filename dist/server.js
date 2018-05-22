@@ -4,22 +4,20 @@ const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
 const bodyParser = require("body-parser");
-dotenv.config({ path: ".env" });
-// const Global.__base = process.cwd + '/';
+const UserAccountMiddleware = require('./controllers/middleware/userAccount');
 const app = express();
+dotenv.config({ path: '.env' });
 const port = process.env.PORT || 3000;
-// app.engine('pug', require('pug').__express)
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-const user = require('./routes/api/user');
-// app.get('/',(req,res)=>{
-//     res.send("hihi");
-// });
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/user', user);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ type: 'application/*+json' }));
+app.set('views', path.join(__dirname, "../views"));
+app.set('view engine', "pug");
+app.set("view options", { layout: true });
+const userRoute = require('./routes/api/user');
+// app.get('/user/login',UserController.getLogIn);
+// app.post('/user/login',UserController.postLogin);
+app.use('/user', userRoute);
 app.listen(port, () => {
     console.log("Server is listening at port :" + port);
-    console.log(process.env.MONGODB_URI);
-    // console.log(process.cwd);
 });
 //# sourceMappingURL=server.js.map

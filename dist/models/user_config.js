@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class User_config {
-    constructor(code, val_vn, val_en, val_cn, avail_from, created_at, updated_at) {
-        this.code = code;
-        this.val_vn = val_vn;
-        this.val_en = val_en;
-        this.val_cn = val_cn;
-        this.avail_from = avail_from;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+    constructor(props) {
+        this.code = props.code;
+        this.val_vn = props.val_vn;
+        this.val_en = props.val_en;
+        this.val_cn = props.val_cn;
+        this.avail_from = props.avail_from;
+        this.created_at = props.created_at;
+        this.updated_at = props.updated_at;
     }
 }
 module.exports = User_config;

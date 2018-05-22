@@ -1,16 +1,14 @@
-import * as express from 'express';
-import { UserController } from '../../controllers/user/UserController';
-
+const express = require('express');
+const UserController = require('../../controllers/user');
+const usercontroller = new UserController();
 const router = express.Router();
 
-const usercontroller = new UserController();
+router.get('/login',usercontroller.getLogIn);
 
-router.get('/login',(req:express.Request,res:express.Response)=>{
-    res.render('login');
-});
+router.post("/login",usercontroller.postLogin);
 
-router.post('/login',  (req:express.Request,res:express.Response)=> {
-    console.log(req.body);
-} );
+router.get('/signup',usercontroller.getSignUp);
+
+router.post('/signup',usercontroller.postSignUp);
 
 module.exports = router;

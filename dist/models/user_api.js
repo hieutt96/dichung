@@ -1,12 +1,12 @@
 "use strict";
 class User_api {
-    constructor(id, category_id, code, name, link, description) {
-        this.id = id;
-        this.category_id = category_id;
-        this.code = code;
-        this.name = name;
-        this.link = link;
-        this.description = description;
+    constructor(props) {
+        this.id = props.id;
+        this.category_id = props.category_id;
+        this.code = props.code;
+        this.name = props.name;
+        this.link = props.link;
+        this.description = props.description;
     }
     getId() {
         return this.id;

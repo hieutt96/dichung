@@ -1,8 +1,8 @@
 "use strict";
 class User_partner_category {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
+    constructor(props) {
+        this.id = props.id;
+        this.name = props.name;
     }
     getId() {
         return this.id;

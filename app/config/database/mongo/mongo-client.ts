@@ -1,6 +1,6 @@
 import * as mongodb from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI||'localhost:27017/mydb';
+const MONGODB_URI = 'mongodb://localhost:27017/dichung';
 
 mongodb.connect(MONGODB_URI, function(err){
     if(err) throw err;
