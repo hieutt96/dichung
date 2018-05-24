@@ -20,10 +20,10 @@ class UserController {
                 errCode:-1,
                 msg:'Missing argument ' + keys[exists]
             });
-        }else{
-            let username = req.body.username;
-            let password = req.body.password;
         }
+
+        let username = req.body.username;
+        let password = req.body.password;
 
     }
 
@@ -49,6 +49,20 @@ class UserController {
             })
         }
 
+        if(!(utils.checkPhone(req.body.phone))){
+            return res.status(400).json({
+                errCode:-1,
+                msg:"Phone Invalid"
+            })
+        }
+
+        if(!(utils.checkPassword(req.body.password))){
+            return res.status(400).json({
+                errCode:-1,
+                msg:"Password qua ngan"
+            });
+        }
+
         let info = {
             username :req.body.username,
             password : req.body.password,
@@ -69,9 +83,7 @@ class UserController {
                     msg:'Username already exists'
                 });
             }else{
-                // console.log(2);
                 let userAcconunt = new User_Account(info);
-                console.log(userAcconunt);
                 userAcconunt.save((err:any)=>{
                     if(err) {
                         console.log(err);
@@ -81,9 +93,7 @@ class UserController {
                 });
             }
         });
-
     }
-
 }
 
 module.exports = UserController;

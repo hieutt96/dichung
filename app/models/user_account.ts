@@ -1,5 +1,6 @@
 import { Timestamp } from "bson";
 const bcrypt = require('bcrypt');
+const moment = require('moment');
 // const pool = require('app/config/database/mysql/pool');
 // import * as pool from 'app/config/database/mysql/pool';
 
@@ -72,7 +73,7 @@ export class User_Account{
         pool.getConnection((err:any,conn:any)=>{
             if(err) throw err;
             let query = 'insert into `user_account` set ?';
-            let admin = Object.assign({}, this.rawData(), { password: this.password });
+            let admin = Object.assign({}, this.rawData(), { password: this.password },{role_id:1},{created_at:moment().utc().format('YYYY-MM-DD HH:mm:ss')});
             conn.query(query, [admin], (err:any, results:any) => {
                 conn.release();
                 if (err) return callback(err);
@@ -98,7 +99,6 @@ export class User_Account{
                 if(err) {
                     return "Couldnt get a connection";
                 };
-                console.log(1);
                 if(!results[0] ){
                     return callback(null,null);
                 }

@@ -1,4 +1,4 @@
-import "./config/database/mysql/pool.ts";
+const pool = require('../config/database/mysql/pool');
 
 class User_role{
     id:number;
@@ -17,7 +17,13 @@ class User_role{
     }
 
     rawData():any{
+        return {
+            name:this.name
+        }
+    }
 
+    public save(){
+        
     }
 }
 

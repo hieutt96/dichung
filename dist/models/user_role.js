@@ -1,6 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-require("./config/database/mysql/pool.ts");
+const pool = require('../config/database/mysql/pool');
 class User_role {
     constructor(id, name) {
         this.id = id;
@@ -13,6 +12,11 @@ class User_role {
         return this.name;
     }
     rawData() {
+        return {
+            name: this.name
+        };
+    }
+    save() {
     }
 }
 module.exports = User_role;

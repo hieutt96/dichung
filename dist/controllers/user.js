@@ -18,10 +18,8 @@ class UserController {
                 msg: 'Missing argument ' + keys[exists]
             });
         }
-        else {
-            let username = req.body.username;
-            let password = req.body.password;
-        }
+        let username = req.body.username;
+        let password = req.body.password;
     }
     getSignUp(req, res) {
         res.render('user/signup');
@@ -40,6 +38,18 @@ class UserController {
             return res.status(400).json({
                 errCode: -1,
                 msg: 'Invalid email format'
+            });
+        }
+        if (!(utils.checkPhone(req.body.phone))) {
+            return res.status(400).json({
+                errCode: -1,
+                msg: "Phone Invalid"
+            });
+        }
+        if (!(utils.checkPassword(req.body.password))) {
+            return res.status(400).json({
+                errCode: -1,
+                msg: "Password qua ngan"
             });
         }
         let info = {
@@ -63,9 +73,7 @@ class UserController {
                 });
             }
             else {
-                console.log(2);
                 let userAcconunt = new user_account_1.User_Account(info);
-                console.log(userAcconunt);
                 userAcconunt.save((err) => {
                     if (err) {
                         console.log(err);

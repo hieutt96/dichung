@@ -17,8 +17,21 @@ class Utils {
         return reg.test(email);
     }
 
-    public checkUsername(username:string){
-        
+    // public checkUsername(username:string){
+    //     const reg = /^\d{8,15}$/;
+    //     return reg.test(username);
+    // }
+
+    public checkPhone(phone:string){
+        const reg = /^\d{8,15}$/;
+        return reg.test(phone);
+    }
+
+    public checkPassword(password:string){
+        if(password.length>6){
+            return true;
+        }
+        return false;
     }
 }
 

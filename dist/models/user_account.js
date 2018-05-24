@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt = require('bcrypt');
+const moment = require('moment');
 // const pool = require('app/config/database/mysql/pool');
 // import * as pool from 'app/config/database/mysql/pool';
 const pool = require('../config/database/mysql/pool');
@@ -52,7 +53,7 @@ class User_Account {
             if (err)
                 throw err;
             let query = 'insert into `user_account` set ?';
-            let admin = Object.assign({}, this.rawData(), { password: this.password });
+            let admin = Object.assign({}, this.rawData(), { password: this.password }, { role_id: 1 }, { created_at: moment().utc().format('YYYY-MM-DD HH:mm:ss') });
             conn.query(query, [admin], (err, results) => {
                 conn.release();
                 if (err)
@@ -79,7 +80,6 @@ class User_Account {
                     return "Couldnt get a connection";
                 }
                 ;
-                console.log(1);
                 if (!results[0]) {
                     return callback(null, null);
                 }
