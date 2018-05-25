@@ -7,5 +7,6 @@ router.get('/login', usercontroller.getLogIn);
 router.post("/login", usercontroller.postLogin);
 router.get('/signup', usercontroller.getSignUp);
 router.post('/signup', usercontroller.postSignUp);
+router.get('/logout', usercontroller.logout);
 module.exports = router;
 //# sourceMappingURL=user.js.map

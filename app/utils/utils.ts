@@ -17,10 +17,10 @@ class Utils {
         return reg.test(email);
     }
 
-    // public checkUsername(username:string){
-    //     const reg = /^\d{8,15}$/;
-    //     return reg.test(username);
-    // }
+    public checkUsername(username:string){
+        const reg = /\w{6,15}/;
+        return reg.test(username);
+    }
 
     public checkPhone(phone:string){
         const reg = /^\d{8,15}$/;

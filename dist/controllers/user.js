@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const user_account_1 = require("../models/user_account");
 const Utils = require('../utils/utils');
+const session = require('express-session');
 class UserController {
     // constructor(){
     // }
@@ -18,8 +19,29 @@ class UserController {
                 msg: 'Missing argument ' + keys[exists]
             });
         }
+        if (!(utils.checkUsername(req.body.username))) {
+            return res.status(400).json({
+                errCode: -1,
+                msg: "Username invalid"
+            });
+        }
         let username = req.body.username;
         let password = req.body.password;
+        user_account_1.User_Account.findByUsername(username, (err, userAcconut) => {
+            if (err)
+                throw err;
+            if (userAcconut) {
+                if (!(userAcconut.comparePassword(password))) {
+                    return res.status(400).json({
+                        errCode: -2,
+                        msg: "Password mismatch"
+                    });
+                }
+                return res.json({
+                    success: "Success"
+                });
+            }
+        });
     }
     getSignUp(req, res) {
         res.render('user/signup');
@@ -50,6 +72,12 @@ class UserController {
             return res.status(400).json({
                 errCode: -1,
                 msg: "Password qua ngan"
+            });
+        }
+        if (!(utils.checkUsername(req.body.username))) {
+            return res.status(400).json({
+                errCode: -1,
+                msg: "Username Invaild"
             });
         }
         let info = {
@@ -83,6 +111,13 @@ class UserController {
                     }
                 });
             }
+        });
+    }
+    logout(req, res) {
+        req.session.destroy();
+        return res.json({
+            errCode: 0,
+            data: {}
         });
     }
 }

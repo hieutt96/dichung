@@ -68,8 +68,12 @@ export class User_Account{
             // created_at:this.created_at
         }
     }
+
+    comparePassword(password:string){
+        return bcrypt.compare(password,this.password);
+    }
+    
     public save(callback:Function){
-        let userAccount = Object.assign({},this.rawData(),{password:this.password});
         pool.getConnection((err:any,conn:any)=>{
             if(err) throw err;
             let query = 'insert into `user_account` set ?';

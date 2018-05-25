@@ -21,10 +21,29 @@ class UserController {
                 msg:'Missing argument ' + keys[exists]
             });
         }
-
+        if(!(utils.checkUsername(req.body.username))){
+            return res.status(400).json({
+                errCode:-1,
+                msg:"Username invalid"
+            });
+        }
         let username = req.body.username;
         let password = req.body.password;
-
+        
+        User_Account.findByUsername(username,(err:any,userAcconut:any)=>{
+            if(err) throw err;
+            if(userAcconut){
+                if(!(userAcconut.comparePassword(password))){
+                    return res.status(400).json({
+                        errCode:-2,
+                        msg:"Password mismatch"
+                    });
+                }
+                return res.json({
+                    success:"Success"
+                });
+            }
+        });
     }
 
     public getSignUp(req:Request, res:Response){
@@ -63,6 +82,13 @@ class UserController {
             });
         }
 
+        if(!(utils.checkUsername(req.body.username))){
+            return res.status(400).json({
+                errCode:-1,
+                msg:"Username Invaild"
+            });
+        }
+
         let info = {
             username :req.body.username,
             password : req.body.password,
@@ -92,6 +118,15 @@ class UserController {
                     }
                 });
             }
+        });
+    }
+
+    public logout(req:Request,res:Response){
+        // req.session.destroy();
+        req.clearCookie;
+        return res.json({
+            errCode:0,
+            data:{}
         });
     }
 }

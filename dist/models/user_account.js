@@ -47,8 +47,10 @@ class User_Account {
             phone: this.phone,
         };
     }
+    comparePassword(password) {
+        return bcrypt.compare(password, this.password);
+    }
     save(callback) {
-        let userAccount = Object.assign({}, this.rawData(), { password: this.password });
         pool.getConnection((err, conn) => {
             if (err)
                 throw err;

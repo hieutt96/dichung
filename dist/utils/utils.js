@@ -17,10 +17,10 @@ class Utils {
         const reg = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
         return reg.test(email);
     }
-    // public checkUsername(username:string){
-    //     const reg = /^\d{8,15}$/;
-    //     return reg.test(username);
-    // }
+    checkUsername(username) {
+        const reg = /\w{6,15}/;
+        return reg.test(username);
+    }
     checkPhone(phone) {
         const reg = /^\d{8,15}$/;
         return reg.test(phone);
