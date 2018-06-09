@@ -11,7 +11,7 @@ const app = express();
 dotenv.config({path : '.env'});
 const port = process.env.PORT||3000;
 
-app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+// app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/*+json' }));
 
@@ -24,8 +24,7 @@ app.set('view engine',"pug");
 app.set("view options", { layout: true });
 
 const userRoute = require('./routes/api/user');
-// app.get('/user/login',UserController.getLogIn);
-// app.post('/user/login',UserController.postLogin);
+
 app.use('/user',userRoute);
 
 app.listen(port,()=>{

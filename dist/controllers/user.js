@@ -1,11 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_account_1 = require("../models/user_account");
 const Utils = require('../utils/utils');
-const session = require('express-session');
+const UserAccountModel = require('../models/userAccount');
 class UserController {
-    // constructor(){
-    // }
     getLogIn(req, res, next) {
         res.render("user/login");
     }
@@ -25,20 +22,34 @@ class UserController {
                 msg: "Username invalid"
             });
         }
-        let username = req.body.username;
-        let password = req.body.password;
-        user_account_1.User_Account.findByUsername(username, (err, userAcconut) => {
-            if (err)
-                throw err;
-            if (userAcconut) {
-                if (!(userAcconut.comparePassword(password))) {
+        let info = {
+            username: req.body.username,
+            password: req.body.password,
+        };
+        console.log(info);
+        UserAccountModel.findByUsername(info.username, (err, userAcconunt) => {
+            if (err) {
+                console.log(err);
+                return res.json({
+                    errCode: -1,
+                    msg: "Error",
+                });
+            }
+            if (userAcconunt) {
+                if (userAcconunt.comparePassword(info.password)) {
+                    return res.json({ success: "Success" });
+                }
+                else {
                     return res.status(400).json({
-                        errCode: -2,
-                        msg: "Password mismatch"
+                        errCode: -1,
+                        msg: "Password Mismatch"
                     });
                 }
+            }
+            else {
                 return res.json({
-                    success: "Success"
+                    errCode: -1,
+                    msg: "No find username match"
                 });
             }
         });
@@ -84,9 +95,16 @@ class UserController {
             username: req.body.username,
             password: req.body.password,
             phone: req.body.phone,
-            email: req.body.email
+            email: req.body.email,
+            partner_id: (req.body.partner_id) ? req.body.partner_id : null,
+            role_id: 1,
+            token: (req.body.token) ? req.body.token : null,
+            disable_api_ids: (req.body.disable_api_ids) ? req.body.disable_api_ids : null,
+            last_login: null,
+            created_at: null,
+            updated_at: null
         };
-        user_account_1.User_Account.findByUsername(info.username, (err, userAcconunt) => {
+        UserAccountModel.findByUsername(info.username, (err, userAcconunt) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json({
@@ -101,10 +119,9 @@ class UserController {
                 });
             }
             else {
-                let userAcconunt = new user_account_1.User_Account(info);
-                userAcconunt.save((err) => {
+                UserAccountModel.save(info, (err, account) => {
                     if (err) {
-                        console.log(err);
+                        throw err;
                     }
                     else {
                         res.json({ success: "Success" });
@@ -114,11 +131,12 @@ class UserController {
         });
     }
     logout(req, res) {
-        req.session.destroy();
-        return res.json({
-            errCode: 0,
-            data: {}
-        });
+        // req.session.destroy();
+        //     req.clearCookie;
+        //     return res.json({
+        //         errCode:0,
+        //         data:{}
+        //     });
     }
 }
 module.exports = UserController;
