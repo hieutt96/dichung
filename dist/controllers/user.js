@@ -26,8 +26,7 @@ class UserController {
             username: req.body.username,
             password: req.body.password,
         };
-        console.log(info);
-        UserAccountModel.findByUsername(info.username, (err, userAcconunt) => {
+        UserAccountModel.findByUsername(info.username, (err, userAccount) => {
             if (err) {
                 console.log(err);
                 return res.json({
@@ -35,8 +34,12 @@ class UserController {
                     msg: "Error",
                 });
             }
-            if (userAcconunt) {
-                if (userAcconunt.comparePassword(info.password)) {
+            if (userAccount) {
+                // console.log(userAccount.username);
+                // console.log(typeof(userAccount.username));
+                let UserAccount = new UserAccountModel(userAccount);
+                // console.log(1);
+                if (UserAccount.comparePassword(info.password)) {
                     return res.json({ success: "Success" });
                 }
                 else {
@@ -104,7 +107,7 @@ class UserController {
             created_at: null,
             updated_at: null
         };
-        UserAccountModel.findByUsername(info.username, (err, userAcconunt) => {
+        UserAccountModel.findByUsername(info.username, (err, userAccount) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json({
@@ -112,7 +115,8 @@ class UserController {
                     msg: 'Internal error'
                 });
             }
-            if (userAcconunt) {
+            console.log("hieu");
+            if (userAccount) {
                 return res.status(400).json({
                     errCode: -2,
                     msg: 'Username already exists'
@@ -138,6 +142,17 @@ class UserController {
         //         data:{}
         //     });
     }
+    getUser() {
+        // User.all({},(err:any,users:any)=>{
+        //     if(err) throw err;
+        //     if(users){
+        //         console.log(users);
+        //     }else{
+        //         console.log("hihi");
+        //     }
+        // }); 
+    }
+    ;
 }
 module.exports = UserController;
 //# sourceMappingURL=user.js.map

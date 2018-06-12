@@ -1,10 +1,8 @@
 import * as express from 'express';
 import * as dotenv from 'dotenv';
 import * as path from "path";
-import * as UserController from './controllers/user';
 import * as bodyParser from 'body-parser';
-const UserAccountMiddleware = require('./controllers/middleware/userAccount');
-const session = require('express-session');
+// const session = require('express-session');
 var passport = require('passport');
 
 const app = express();

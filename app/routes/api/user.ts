@@ -13,4 +13,6 @@ router.post('/signup',usercontroller.postSignUp);
 
 router.get('/logout',usercontroller.logout);
 
+router.get('/info',usercontroller.getUser);
+
 module.exports = router;
